@@ -3,6 +3,11 @@
   "Image": {
     "Name": "wikimedia/mediawiki",
     "Update": "true"
-  }
+  },
+  "Ports": [
+    {
+      "ContainerPort": "80"
+    }
+  ],
 }
 
