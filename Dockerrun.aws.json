@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "wikimedia/mediawiki",
+    "Name": "wikimedia/mediawiki:1.30.0-wmf4",
     "Update": "true"
   },
   "Ports": [
