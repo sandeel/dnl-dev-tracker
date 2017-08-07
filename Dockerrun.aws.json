@@ -9,7 +9,7 @@
     },
     {
       "name": "wiki",
-      "image": "thomaswo/wikijs:latest
+      "image": "thomaswo/wikijs:latest",
       "essential": true,
       "memoryReservation": 128,
 	  "links": [
