@@ -13,3 +13,28 @@
     }
   ]
 }
+
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "mongo",
+      "image": "mongo",
+      "essential": true,
+    },
+    {
+      "name": "wiki",
+      "image": "requarks/wiki:master",
+      "essential": true,
+	  "links": [
+        "mongo"
+      ]
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+    }
+  ]
+}
