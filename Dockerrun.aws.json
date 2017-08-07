@@ -4,7 +4,7 @@
     {
       "name": "mongo",
       "image": "mongo",
-      "essential": true,
+      "essential": true
     },
     {
       "name": "wiki",
