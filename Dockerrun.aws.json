@@ -4,12 +4,14 @@
     {
       "name": "mongo",
       "image": "mongo",
-      "essential": true
+      "essential": true,
+      "memoryReservation": 128
     },
     {
       "name": "wiki",
       "image": "requarks/wiki:master",
       "essential": true,
+      "memoryReservation": 128,
 	  "links": [
         "mongo"
       ],
