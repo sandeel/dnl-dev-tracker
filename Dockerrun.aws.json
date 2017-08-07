@@ -12,13 +12,13 @@
       "essential": true,
 	  "links": [
         "mongo"
-      ]
+      ],
       "portMappings": [
         {
           "hostPort": 80,
           "containerPort": 80
         }
-      ],
+      ]
     }
   ]
 }
