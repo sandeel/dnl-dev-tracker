@@ -9,7 +9,7 @@
     },
     {
       "name": "wiki",
-      "image": "thomaswo/wikijs:latest",
+      "image": "requarks/wiki:master",
       "essential": true,
       "memoryReservation": 128,
 	  "links": [
@@ -18,7 +18,7 @@
       "portMappings": [
         {
           "hostPort": 80,
-          "containerPort": 3000
+          "containerPort": 80
         }
       ]
     }
