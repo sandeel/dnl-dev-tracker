@@ -2,19 +2,10 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "mongo",
-      "image": "mongo",
+      "name": "dnldevtracker",
+      "image": "feelydj/dnldevtracker:master",
       "essential": true,
-      "memoryReservation": 128
-    },
-    {
-      "name": "wiki",
-      "image": "requarks/wiki:master",
-      "essential": true,
-      "memoryReservation": 128,
-	  "links": [
-        "mongo"
-      ],
+      "memoryReservation": 256,
       "portMappings": [
         {
           "hostPort": 80,
