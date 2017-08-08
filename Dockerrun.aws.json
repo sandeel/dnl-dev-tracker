@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "dnldevtracker",
-      "image": "feelydj/dnldevtracker:master",
+      "image": "feelydj/dnldevtracker:latest",
       "essential": true,
       "memoryReservation": 256,
       "portMappings": [
