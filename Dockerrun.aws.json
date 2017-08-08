@@ -5,7 +5,7 @@
       "name": "dnldevtracker",
       "image": "feelydj/dnldevtracker:latest",
       "essential": true,
-      "memoryReservation": 256,
+      "memoryReservation": 512,
       "portMappings": [
         {
           "hostPort": 80,
