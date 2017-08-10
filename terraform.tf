@@ -107,6 +107,29 @@ resource "aws_elastic_beanstalk_environment" "dnl-dev-tracker" {
     value     = "${aws_iam_instance_profile.beanstalk_instance_profile.arn}"
   }
 
+  setting {
+    namespace = "aws:elasticbeanstalk:command"
+    name      = "DeploymentPolicy"
+    value     = "RollingWithAdditionalBatch"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:command"
+    name      = "RollingUpdateType"
+    value     = "Health"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:command"
+    name      = "BatchSizeType"
+    value     = "Fixed"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:command"
+    name      = "BatchSize"
+    value     = "1"
+  }
 }
 
 resource "aws_s3_bucket" "foo" {
