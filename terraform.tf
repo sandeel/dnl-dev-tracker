@@ -1,5 +1,16 @@
+variable "access_key" {}
+variable "secret_key" {}
+variable "ec2_keypair" {}
+variable "region" {
+  default = "eu-west-1"
+}
+variable "github_oauth_token" {}
+
 provider "aws" {
-  region     = "eu-west-1"
+
+  access_key = "${var.access_key}"
+  secret_key = "${var.secret_key}"
+  region     = "${var.region}"
 }
 
 resource "aws_vpc" "main" {
@@ -92,7 +103,7 @@ resource "aws_elastic_beanstalk_environment" "dnl-dev-tracker" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "EC2KeyName"
-    value     = "id_rsa"
+    value     = "${var.ec2_keypair}"
   }
 
   setting {
@@ -132,7 +143,7 @@ resource "aws_elastic_beanstalk_environment" "dnl-dev-tracker" {
   }
 }
 
-resource "aws_s3_bucket" "foo" {
+resource "aws_s3_bucket" "dnl-dev-tracker-codepipeline-bucket" {
   bucket = "dnl-dev-tracker-codepipeline-bucket"
   acl    = "private"
 }
@@ -310,12 +321,12 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 EOF
 }
 
-resource "aws_codepipeline" "foo" {
-  name     = "tf-test-pipeline"
+resource "aws_codepipeline" "dnl-dev-tracker-pipeline" {
+  name     = "dnl-dev-tracker-pipeline"
   role_arn = "${aws_iam_role.codepipeline_role.arn}"
 
   artifact_store {
-    location = "${aws_s3_bucket.foo.bucket}"
+    location = "${aws_s3_bucket.dnl-dev-tracker-codepipeline-bucket.bucket}"
     type     = "S3"
   }
 
@@ -334,7 +345,7 @@ resource "aws_codepipeline" "foo" {
         Owner      = "sandeel"
         Repo       = "dnl-dev-tracker"
         Branch     = "master"
-        OAuthToken = "73a65a3735d8e7e07ca3eaaa89785ab8c670fa30"
+        OAuthToken = "${var.github_oauth_token}"
       }
     }
   }
